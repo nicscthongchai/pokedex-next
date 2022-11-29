@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -23,27 +24,31 @@ export const PokemonCard: React.FC<PokemonCardProps> = (props) => {
   }, []);
 
   return (
-    <div
-      className={twMerge(
-        "w-40 text-center p-4 mx-auto",
-        "cursor-pointer shadow-xl rounded-xl",
-        "border border-black border-opacity-5",
-        "[&:hover>:first-child]:scale-150"
-      )}
-    >
-      <div className="w-full h-28 relative scale-100 transition-transform">
-        {info && (
-          <Image
-            src={info.sprites.other["official-artwork"].front_default}
-            alt="avatar"
-            fill
-            style={{
-              objectFit: "contain",
-            }}
-          />
+    <>
+      <Link
+        href={`/pokedex/${info?.id}`}
+        className={twMerge(
+          "w-40 text-center p-4 mx-auto",
+          "cursor-pointer shadow-xl rounded-xl",
+          "border border-black border-opacity-5"
         )}
-      </div>
-      <div className="text-lg font-semibold capitalize">{pokemonInfo.name}</div>
-    </div>
+      >
+        <div className="w-full h-28 relative">
+          {info && (
+            <Image
+              src={info.sprites.other["official-artwork"].front_default}
+              alt="avatar"
+              fill
+              style={{
+                objectFit: "contain",
+              }}
+            />
+          )}
+        </div>
+        <div className="text-lg font-semibold capitalize">
+          {pokemonInfo.name}
+        </div>
+      </Link>
+    </>
   );
 };
