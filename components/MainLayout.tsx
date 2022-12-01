@@ -2,11 +2,11 @@ import { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { twMerge } from "tailwind-merge";
 
-type MainLayoutProps = {
+type PokedexLayoutProps = {
   children?: ReactNode;
 };
 
-export const MainLayout: React.FC<MainLayoutProps> = (props) => {
+export const PokedexLayout: React.FC<PokedexLayoutProps> = (props) => {
   const { children } = props;
   return (
     <main

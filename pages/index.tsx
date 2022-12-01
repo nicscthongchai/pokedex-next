@@ -1,36 +1,18 @@
-import { useEffect, useState } from "react";
-import { MainLayout } from "../components/MainLayout";
-import { PokemonCard } from "../components/PokemonCard";
+import Link from "next/link";
+import { Button } from "../components/Button";
 import { NextCustomPage } from "../types/next";
-import { twMerge } from "tailwind-merge";
 
 const HomePage: NextCustomPage = () => {
-  const [pokemons, setPokemons] = useState<any[]>([]);
-
-  const getPokemons = async () => {
-    const result = await fetch("https://pokeapi.co/api/v2/pokemon");
-    const data = await result.json();
-    setPokemons(data.results);
-  };
-
-  useEffect(() => {
-    getPokemons();
-  }, []);
-
   return (
-    <div
-      className={twMerge(
-        "grid grid-cols-2 gap-2.5 gap-y-5 w-full",
-        "sm:grid-cols-3 lg:grid-cols-5"
-      )}
-    >
-      {pokemons.map((pokemon, index) => {
-        return <PokemonCard key={index} pokemonInfo={pokemon} />;
-      })}
+    <div className="h-screen flex justify-center items-center gap-2.5">
+      <Link href="https://youtube.com" target="_blank">
+        <Button className="bg-red-600 text-white">Youtube</Button>
+      </Link>
+      <Link href="/pokedex">
+        <Button>Pokedex</Button>
+      </Link>
     </div>
   );
 };
-
-HomePage.Layout = MainLayout;
 
 export default HomePage;

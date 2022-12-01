@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { MainLayout } from "../../components/MainLayout";
+import { PokedexLayout } from "../../components/MainLayout";
 import { NextCustomPage } from "../../types/next";
 
 const PokemonInfoPage: NextCustomPage = () => {
@@ -8,6 +8,6 @@ const PokemonInfoPage: NextCustomPage = () => {
   return <div>Pokemon Info Page - {router.query.pokemonId}</div>;
 };
 
-PokemonInfoPage.Layout = MainLayout;
+PokemonInfoPage.Layout = PokedexLayout;
 
 export default PokemonInfoPage;
