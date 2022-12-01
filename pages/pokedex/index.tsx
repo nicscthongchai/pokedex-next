@@ -48,7 +48,10 @@ const HomePage: NextCustomPage = () => {
         )}
       >
         {pokemons.map((pokemon, index) => {
-          return <PokemonCard key={index} pokemonInfo={pokemon} />;
+          const id = pokemon.url
+            .replace("https://pokeapi.co/api/v2/pokemon/", "")
+            .replace("/", "");
+          return <PokemonCard key={index} pokemonInfo={{ ...pokemon, id }} />;
         })}
       </div>
 
